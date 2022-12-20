@@ -17,6 +17,9 @@ func GetAllUsers(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{"status": "success", "data": users})
 }
+func DeleteUser(c *fiver.Ctx) error {
+	return c.JSON(fiber.Map{"status": "success", "data": "deleted"})
+}
 
 func DeleteUser(c *fiver.Ctx){
 	return c.JSON(fiber.Map{"status":"success","data":"deleted"})
