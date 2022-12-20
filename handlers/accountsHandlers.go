@@ -21,8 +21,8 @@ func DeleteUser(c *fiver.Ctx) error {
 	return c.JSON(fiber.Map{"status": "success", "data": "deleted"})
 }
 
-func DeleteUser(c *fiver.Ctx){
-	return c.JSON(fiber.Map{"status":"success","data":"deleted"})
+func DeleteUser(c *fiver.Ctx) {
+	return c.JSON(fiber.Map{"status": "success", "data": "deleted"})
 }
 
 func Register(c *fiber.Ctx) error {
