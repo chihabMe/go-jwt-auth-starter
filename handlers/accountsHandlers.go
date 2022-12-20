@@ -18,6 +18,10 @@ func GetAllUsers(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusCreated).JSON(fiber.Map{"status": "success", "data": users})
 }
 
+func DeleteUser(c *fiver.Ctx){
+	return c.JSON(fiber.Map{"status":"success","data":"deleted"})
+}
+
 func Register(c *fiber.Ctx) error {
 	type Response struct {
 		Username string `json:"username"`
