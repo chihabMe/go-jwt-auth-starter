@@ -78,7 +78,7 @@ func RefreshToken(c *fiber.Ctx) error {
 	//checking if the received refresh token is the latest generated refresh token for that user
 	//by  looking in the redis database
 	ctx := context.Background()
-	latestRefreshToken, err := utils.GetRefreshToken(ctx, user.ID)
+	latestRefreshToken, err := utils.GetRefreshToken(ctx, refreshString, user.ID)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"status": "error", "data": "dead refresh token please login again"})
 	}
@@ -140,7 +140,7 @@ func LogoutToken(c *fiber.Ctx) error {
 		//return c.SendStatus(fiber.StatusBadRequest)
 	}
 	ctx := context.Background()
-	latestRefreshToken, err := utils.GetRefreshToken(ctx, user.ID)
+	latestRefreshToken, err := utils.GetRefreshToken(ctx, refreshToken, user.ID)
 	if err != nil {
 		//fake ok status
 		return c.SendStatus(fiber.StatusOK)
@@ -152,7 +152,7 @@ func LogoutToken(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusOK)
 		//return c.SendStatus(fiber.StatusBadRequest)
 	}
-	utils.DeleteRefreshToken(ctx, user.ID)
+	utils.DeleteRefreshToken(ctx, refreshToken, user.ID)
 	return c.SendStatus(fiber.StatusOK)
 }
 func VerifyToken(c *fiber.Ctx) error {
