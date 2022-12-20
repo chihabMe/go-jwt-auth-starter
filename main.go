@@ -4,6 +4,8 @@
 // @Update
 package main
 
+//addded localy
+
 import (
 	"log"
 	"os"
